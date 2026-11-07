@@ -37,6 +37,16 @@ object Config : PreferenceConfig, DBConfig {
         const val THEME_ORDINAL = "theme_ordinal"
         const val DOH = "doh"
         const val RAND_NAME = "rand_name"
+        // === Appearance / UI overhaul ===
+        const val BG_TYPE = "appearance_bg_type"
+        const val BG_PATH = "appearance_bg_path"
+        const val BG_BLUR = "appearance_bg_blur"
+        const val BG_DIM = "appearance_bg_dim"
+        const val TROLL_ENABLED = "appearance_troll_enabled"
+        const val TROLL_SPEED = "appearance_troll_speed"
+        const val TROLL_COUNT = "appearance_troll_count"
+        const val TROLL_SIZE = "appearance_troll_size"
+        const val GLASS_ALPHA = "appearance_glass_alpha"
     }
 
     object OldValue {
@@ -97,6 +107,22 @@ object Config : PreferenceConfig, DBConfig {
     var customChannelUrl by preference(Key.CUSTOM_CHANNEL, "")
     var downloadDir by preference(Key.DOWNLOAD_DIR, "")
     var randName by preference(Key.RAND_NAME, true)
+
+    // ===== Appearance / Liquid Glass UI =====
+    // 0 = none, 1 = static image, 2 = dynamic video wallpaper
+    var appearanceBgType by preference(Key.BG_TYPE, 0)
+    var appearanceBgPath by preference(Key.BG_PATH, "")
+    // blur 0..25 dp radius
+    var appearanceBgBlur by preference(Key.BG_BLUR, 12)
+    // dim 0..80%
+    var appearanceBgDim by preference(Key.BG_DIM, 25)
+    var trollEnabled by preference(Key.TROLL_ENABLED, false)
+    // 0.2..3.0 -> multiplier
+    var trollSpeed by preference(Key.TROLL_SPEED, 100)
+    var trollCount by preference(Key.TROLL_COUNT, 6)
+    var trollSize by preference(Key.TROLL_SIZE, 100)
+    // glass alpha 0..100
+    var glassAlpha by preference(Key.GLASS_ALPHA, 22)
     var checkUpdate
         get() = checkUpdatePrefs
         set(value) {

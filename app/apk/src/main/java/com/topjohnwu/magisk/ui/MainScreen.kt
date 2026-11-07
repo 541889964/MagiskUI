@@ -77,6 +77,9 @@ import com.topjohnwu.magisk.ui.settings.SettingsScreen
 import com.topjohnwu.magisk.ui.settings.SettingsViewModel
 import com.topjohnwu.magisk.ui.superuser.SuperuserScreen
 import com.topjohnwu.magisk.ui.superuser.SuperuserViewModel
+import com.topjohnwu.magisk.ui.liquid.AppBackground
+import com.topjohnwu.magisk.ui.liquid.TrollRain
+import com.topjohnwu.magisk.ui.appearance.AppearanceScreen
 import kotlinx.coroutines.launch
 import com.topjohnwu.magisk.core.R as CoreR
 
@@ -85,7 +88,8 @@ enum class Tab(val titleRes: Int, val iconRes: Int) {
     SUPERUSER(CoreR.string.superuser, CoreR.drawable.ic_superuser),
     HOME(CoreR.string.section_home, R.drawable.ic_home),
     LOG(CoreR.string.logs, R.drawable.ic_bug),
-    SETTINGS(CoreR.string.settings, R.drawable.ic_settings);
+    SETTINGS(CoreR.string.settings, R.drawable.ic_settings),
+    APPEARANCE(CoreR.string.section_appearance, R.drawable.ic_appearance);
 }
 
 @Composable
@@ -158,6 +162,8 @@ fun MainScreen(
 
     // The explicit focus wiring below assumes the FAB sits above a bottom bar, so only apply
     // it in bar mode. With a rail, the default 2D focus search works as is.
+    AppBackground {
+    androidx.compose.foundation.layout.Box(Modifier.fillMaxSize()) {
     NavigationSuiteScaffold(
         modifier = modifier.fillMaxSize(),
         navigationSuiteType = navType,
@@ -336,9 +342,15 @@ fun MainScreen(
                         CollectNavEvents(vm, navigator)
                         SettingsScreen(vm)
                     }
+                    Tab.APPEARANCE -> {
+                        AppearanceScreen()
+                    }
                 }
             }
             }
         }
+    }
+        TrollRain(Modifier.fillMaxSize())
+    }
     }
 }

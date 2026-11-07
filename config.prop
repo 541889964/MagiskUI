@@ -1,0 +1,7 @@
+version=9.9-ui
+outdir=out
+abiList=armeabi-v7a,arm64-v8a,x86,x86_64
+keyStore=fork.jks
+keyStorePass=magiskfork123
+keyAlias=magiskfork
+keyPass=magiskfork123
